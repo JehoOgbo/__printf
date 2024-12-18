@@ -1,4 +1,5 @@
 #include "main.h"
+#include <limits.h>
 
 /**
  * op_char - prints a character
@@ -74,7 +75,21 @@ int op_integer(va_list arg, char **buffer, unsigned int *old_size)
 	{
 		_putchar('-', buffer, old_size);
 		num = num * -1;
+
 		negative = 1;
+		if (num == INT_MIN)
+		{
+			num = INT_MAX;
+			negative += print_num(INT_MAX / 10, buffer, old_size);
+			negative += _putchar('8', buffer, old_size);
+			return (negative);
+		}
+	}
+	if (num == 0)
+	{
+		/* if num is 0 print zero and return 1 */
+		_putchar('0', buffer, old_size);
+		return (1);
 	}
 	negative += print_num(num, buffer, old_size);
 
