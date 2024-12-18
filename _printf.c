@@ -34,7 +34,7 @@ int _printf(const char *format, ...)
 			f = func(format);
 			if (f == NULL)
 			{
-				_putchar(*(--format));
+				i += _putchar(*(--format));
 				format++;
 				continue;
 			}
