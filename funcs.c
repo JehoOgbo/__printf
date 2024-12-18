@@ -55,3 +55,28 @@ int op_percent(va_list arg, char **buffer, unsigned int *old_size)
 
 	return (_putchar('%', buffer, old_size));
 }
+
+/** op_integer - prints an integer
+ *
+ * @arg: pointer to the integer
+ *
+ * Return: number of digits the integer has
+ */
+int op_integer(va_list arg, char **buffer, unsigned int *old_size)
+{
+	int num;
+	int negative;
+
+	negative = 0;
+	num = va_arg(arg, int);
+	/* if num is negative print - and convert the num to positive */
+	if (num < 0)
+	{
+		_putchar('-', buffer, old_size);
+		num = num * -1;
+		negative = 1;
+	}
+	negative += print_num(num, buffer, old_size);
+
+	return (negative);
+}

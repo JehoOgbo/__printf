@@ -81,6 +81,8 @@ int (*func(const char *format)) (va_list arg, char **buffer, unsigned int *old_s
 		{"c", op_char},
 		{"s", op_string},
 		{"%", op_percent},
+		{"d", op_integer},
+		{"i", op_integer},
 		{NULL, NULL}
 	};
 

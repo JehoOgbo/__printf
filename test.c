@@ -12,8 +12,8 @@ int main(void)
 	int len2;
 
 
-    len = _printf("dkjfk jkfjkjk  % kdjfksfkj kfkjksjfk ");
-    len2 = printf("dkjfk jkfjkjk  % kdjfksfkj kfkjksjfk ");
+    len = _printf("dkjfk jkfjkjk  %i kdjfksfkj kfkjksjfk \n", 1984);
+    len2 = printf("dkjfk jkfjkjk  %i kdjfksfkj kfkjksjfk \n", 1984);
 	printf("%d\n", len);
 	printf("%d\n", len2);
 
