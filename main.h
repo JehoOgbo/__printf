@@ -1,6 +1,7 @@
 #ifndef _MAIN_H_
 #define _MAIN_H_
 
+
 #include <stdarg.h>
 int _printf(const char *format, ...);
 
@@ -14,12 +15,13 @@ int _printf(const char *format, ...);
 typedef struct operations
 {
 	char *f_spec;
-	int (*f)(va_list arg);
+	int (*f)(va_list arg, char **buffer, unsigned int *old_size);
 } ops_t;
 
-int op_char(va_list arg);
-int op_string(va_list arg);
-int op_percent(va_list arg);
-int _putchar(char c);
+int op_char(va_list arg, char **buffer, unsigned int *old_size);
+int op_string(va_list arg, char **buffer, unsigned int *old_size);
+int op_percent(va_list arg, char **buffer, unsigned int *old_size);
+int _putchar(char c, char **buffer, unsigned int *old_size);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
 #endif /* _MAIN_H_ */

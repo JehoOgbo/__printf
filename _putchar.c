@@ -8,8 +8,15 @@
  *
  * Return: 1
  */
-int _putchar(char c)
+int _putchar(char c, char **buffer, unsigned int *old_size)
 {
-	write(1, &c, 1);
+	char *ptr;
+
+	ptr = _realloc(*buffer, *old_size, *old_size + 1);
+	ptr[*old_size] = c;
+
+	*old_size = *old_size + 1;
+
+	*buffer = ptr;
 	return (1);
 }

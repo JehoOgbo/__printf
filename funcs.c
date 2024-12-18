@@ -7,11 +7,11 @@
  *
  * Return: 1
  */
-int op_char(va_list arg)
+int op_char(va_list arg, char **buffer, unsigned int *old_size)
 {
 	char c = va_arg(arg, int);
 
-	return (_putchar(c));
+	return (_putchar(c, buffer, old_size));
 }
 
 /**
@@ -21,7 +21,7 @@ int op_char(va_list arg)
  *
  * Return: no of chars printed
  */
-int op_string(va_list arg)
+int op_string(va_list arg, char **buffer, unsigned int *old_size)
 {
 	int len;
 	char *string;
@@ -36,7 +36,7 @@ int op_string(va_list arg)
 
 	while (string[len])
 	{
-		_putchar(string[len]);
+		_putchar(string[len], buffer, old_size);
 		len++;
 	}
 	return (len);
@@ -49,9 +49,9 @@ int op_string(va_list arg)
  *
  * Return: 1 for 1 char printed
  */
-int op_percent(va_list arg)
+int op_percent(va_list arg, char **buffer, unsigned int *old_size)
 {
 	(void) arg;
 
-	return (_putchar('%'));
+	return (_putchar('%', buffer, old_size));
 }
