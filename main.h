@@ -6,7 +6,7 @@
 int _printf(const char *format, ...);
 
 /**
- * struct operations
+ * struct operations - stores the specifiers and associated functions
  *
  * @f_spec: format specifier
  * @f: function to be executed

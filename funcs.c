@@ -5,6 +5,8 @@
  * op_char - prints a character
  *
  * @arg: character argument
+ * @buffer: pointer to buffer in which output is to be stored
+ * @old_size: pointer to current index in buffer
  *
  * Return: 1
  */
@@ -19,6 +21,8 @@ int op_char(va_list arg, char **buffer, unsigned int *old_size)
  * op_string - prints a string
  *
  * @arg: string argument pointer
+ * @buffer: pointer to buffer in which output is to be stored
+ * @old_size: pointer to current index in buffer
  *
  * Return: no of chars printed
  */
@@ -45,9 +49,10 @@ int op_string(va_list arg, char **buffer, unsigned int *old_size)
 
 /**
  * op_percent - prints the percent sign
- * 
- * @arg: to be ignored
  *
+ * @arg: to be ignored
+ * @buffer: pointer to buffer in which output is to be stored
+ * @old_size: pointer to current index in buffer
  * Return: 1 for 1 char printed
  */
 int op_percent(va_list arg, char **buffer, unsigned int *old_size)
@@ -57,9 +62,12 @@ int op_percent(va_list arg, char **buffer, unsigned int *old_size)
 	return (_putchar('%', buffer, old_size));
 }
 
-/** op_integer - prints an integer
+/**
+ * op_integer - prints an integer
  *
  * @arg: pointer to the integer
+ * @buffer: pointer to buffer in which output is to be stored
+ * @old_size: pointer to current index in buffer
  *
  * Return: number of digits the integer has
  */

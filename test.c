@@ -12,9 +12,8 @@ int main(void)
 	int len;
 	int len2;
 
-
-	len = _printf("dkjfk jkfjkjk  %d kdjfksfkj kfkjksjfk \n", INT_MIN);
-    len2 = printf("dkjfk jkfjkjk  %d kdjfksfkj kfkjksjfk \n", INT_MIN);
+	len = _printf("%d - %d = %d\n", 1024, 2048, -1024);
+	len2 = printf("%d - %d = %d\n", 1024, 2048, -1024);
 	printf("%d\n", len);
 	printf("%d\n", len2);
 

@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int (*func(const char *format)) (va_list arg, char **buffer, unsigned int *old_size);
+int (*func(const char *format)) (va_list, char **, unsigned int *);
+int writer(char *buffer, int i);
 
 /**
  * _printf - function to handle printing of formatted output to stdout
@@ -16,11 +17,9 @@ int _printf(const char *format, ...)
 {
 	int i;
 	va_list ap;
-	int (*f) (va_list arg, char **buffer, unsigned int *old_size);
-	char **buffer;
-	char *buf;
-	unsigned int *old_size;
-	unsigned int old;
+	int (*f)(va_list arg, char **buffer, unsigned int *old_size);
+	char **buffer, *buf;
+	unsigned int *old_size, old;
 
 	buf = NULL;
 	buffer = &buf;
@@ -28,31 +27,23 @@ int _printf(const char *format, ...)
 	old_size = &old;
 	i = 0;
 	va_start(ap, format);
-
 	if (!format || !(*format))
-	{
 		return (-1);
-	}
 	while (format && *format)
 	{
-		/* check for format specifier and ensure it isn't end of string */
 		if (*format == '%' && format[1])
 		{
-			/* call format finder */
 			format++;
 			f = func(format);
 			if (f == NULL)
 			{
-				i += _putchar(*(--format), buffer, old_size);
-				format++;
+				i += _putchar(*(format - 1), buffer, old_size);
 				continue;
 			}
 			i += f(ap, buffer, old_size);
 			format++;
 			continue;
 		}
-		/* if '%' is end of string don't print anything. return -1 */
-		/* Don't forget to free */
 		else if (*format == '%' && !(format[1]))
 		{
 			free(*buffer);
@@ -61,20 +52,18 @@ int _printf(const char *format, ...)
 		i += _putchar(*format, buffer, old_size);
 		format++;
 	}
-	write(STDOUT_FILENO, *buffer, i);
 	va_end(ap);
-	free(*buffer);
-	return (i);
+	return (writer(*buffer, i));
 }
 
 /**
- * format_find - finds the function for the appropriate char
+ * func - finds the function for the appropriate char
  *
  * @format: pointer to first element of string to be checked
  *
  * Return: the right function
  */
-int (*func(const char *format)) (va_list arg, char **buffer, unsigned int *old_size)
+int (*func(const char *format)) (va_list, char **, unsigned int *)
 {
 	int i;
 	ops_t ops[] = {
@@ -91,10 +80,28 @@ int (*func(const char *format)) (va_list arg, char **buffer, unsigned int *old_s
 	{
 		if (*format == *ops[i].f_spec)
 		{
-			return(ops[i].f);	
+			return (ops[i].f);
 		}
 		i++;
 	}
 
 	return (NULL);
+}
+
+/**
+ * writer - writes the input to stdout
+ *
+ * @buffer: the buffer to be written
+ * @i: number of bytes to be written
+ *
+ * Return: the number of bytes written
+ */
+int writer(char *buffer, int i)
+{
+	int count;
+
+	count = write(STDOUT_FILENO, buffer, i);
+	free(buffer);
+
+	return (count);
 }

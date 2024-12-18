@@ -5,6 +5,8 @@
  * _putchar - outputs a single character
  *
  * @c: the character to be printed
+ * @buffer: pointer to a the buffer where the characters are stored
+ * @old_size: pointer to the current index in the buffer
  *
  * Return: 1
  */
