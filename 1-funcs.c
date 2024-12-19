@@ -34,7 +34,7 @@ int print_num(int num, char **buffer, unsigned int *old_size)
  *
  * Return: the number of digits of the binary
  */
-int bin_conv(int num, char **buffer, unsigned int *old_size)
+int bin_conv(unsigned int num, char **buffer, unsigned int *old_size)
 {
 	int count;
 

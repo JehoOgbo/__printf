@@ -115,8 +115,8 @@ int op_integer(va_list arg, char **buffer, unsigned int *old_size)
  */
 int op_binary(va_list arg, char **buffer, unsigned int *old_size)
 {
-	int bin;
+	unsigned int bin;
 
-	bin = va_arg(arg, int);
+	bin = va_arg(arg, unsigned int);
 	return (bin_conv(bin, buffer, old_size));
 }

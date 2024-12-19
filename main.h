@@ -28,6 +28,6 @@ int print_num(int num, char **buffer, unsigned int *old_size);
 int _putchar(char c, char **buffer, unsigned int *old_size);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
-int bin_conv(int num, char **buffer, unsigned int *old_size);
+int bin_conv(unsigned int num, char **buffer, unsigned int *old_size);
 
 #endif /* _MAIN_H_ */
