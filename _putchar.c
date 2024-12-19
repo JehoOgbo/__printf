@@ -1,5 +1,6 @@
 #include "main.h"
 #include <unistd.h>
+#include <stdlib.h>
 
 /**
  * _putchar - outputs a single character
@@ -14,6 +15,12 @@ int _putchar(char c, char **buffer, unsigned int *old_size)
 {
 	char *ptr;
 
+	if (*old_size == 1024)
+	{
+		*old_size = 0;
+		write(STDOUT_FILENO, buffer, 1023);
+		free(*buffer);
+	}
 	ptr = _realloc(*buffer, *old_size, *old_size + 1);
 	ptr[*old_size] = c;
 
