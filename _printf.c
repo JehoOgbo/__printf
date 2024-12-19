@@ -72,6 +72,7 @@ int (*func(const char *format)) (va_list, char **, unsigned int *)
 		{"%", op_percent},
 		{"d", op_integer},
 		{"i", op_integer},
+		{"b", op_binary},
 		{NULL, NULL}
 	};
 

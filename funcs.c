@@ -103,3 +103,20 @@ int op_integer(va_list arg, char **buffer, unsigned int *old_size)
 
 	return (negative);
 }
+
+/**
+ * op_binary - writes the binary equivalent of a number into a buffer
+ *
+ * @arg: argument ptr to the number
+ * @buffer: the pointer to the buffer to which the equivalent is to be written
+ * @old_size: pointer to the current active index in the buffer
+ *
+ * Return: the number of characters written 
+ */
+int op_binary(va_list arg, char **buffer, unsigned int *old_size)
+{
+	int bin;
+
+	bin = va_arg(arg, int);
+	return (bin_conv(bin, buffer, old_size));
+}
