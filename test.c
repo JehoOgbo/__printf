@@ -10,15 +10,12 @@
 int main(void)
 {
 	int len;
-	int len2;
-	long int res;
+	/* int len2;*/
 
-	res = INT_MAX;
 
-	len = _printf("%x + %X = %x\n", UINT_MAX, 0, res);
-	len2 = printf("%x + %X = %x\n", UINT_MAX, 0, res);
+	len = _printf("%S\n%S\n", "Best\nSchool", "John\tHolt");
 	printf("%d\n", len);
-	printf("%d\n", len2);
+	/* printf("%d\n", len2);*/
 
 	return (0);
 }

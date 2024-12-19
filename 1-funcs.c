@@ -109,7 +109,7 @@ int oct_conv(unsigned int num, char **buffer, unsigned int *old_size)
  *
  * Return: the number of digits of the binary
  */
-int hex_conv(unsigned int num, char **buffer, unsigned int *old_size)
+int hex_conv(unsigned int num, char **buffer, unsigned int *old_size, int chk)
 {
 	int count;
 	unsigned int ascii;
@@ -118,7 +118,7 @@ int hex_conv(unsigned int num, char **buffer, unsigned int *old_size)
 	ascii = num % 16;
 	if (ascii > 9)
 	{
-		ascii += 87;
+		ascii += chk;
 	}
 	else
 	{
@@ -130,7 +130,7 @@ int hex_conv(unsigned int num, char **buffer, unsigned int *old_size)
 		return (1);
 	}
 
-	count = 1 + hex_conv(num / 16, buffer, old_size);
+	count = 1 + hex_conv(num / 16, buffer, old_size, chk);
 	_putchar(ascii, buffer, old_size);
 	return (count);
 }

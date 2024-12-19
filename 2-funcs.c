@@ -55,5 +55,41 @@ int op_hex(va_list arg, char **buffer, unsigned int *old_size)
 	unsigned int oct;
 
 	oct = va_arg(arg, unsigned int);
-	return (hex_conv(oct, buffer, old_size));
+	return (hex_conv(oct, buffer, old_size, 87));
+}
+
+/**
+ * op_sp_string - prints a string with some caveats
+ * Description: Non printable characters (0 < ASCII value < 32 or >= 127)
+ * are printed this way: \x, followed by the ASCII code value in hexadecimal
+ * (upper case - always 2 characters)
+ *
+ * @arg: argument ptr to the string
+ * @buffer: the pointer to the buffer to which the equivalent is to be written
+ * @old_size: pointer to the current active index in the buffer
+ *
+ * Return: the number of characters written
+ */
+int op_sp_string(va_list arg, char **buffer, unsigned int *old_size)
+{
+	int i;
+	int count;
+	char *string;
+
+	i = 0;
+	count = 0;
+	string = va_arg(arg, char *);
+
+	while (string[i])
+	{
+		if ((string[i] > 0 && string[i] < 32) || (string[i] >= 127))
+		{
+			count += hex_print(string[i], buffer, old_size);
+			i++;
+		}
+		_putchar(string[i], buffer, old_size);
+		i++;
+		count++;
+	}
+	return (count);
 }
