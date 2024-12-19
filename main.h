@@ -23,11 +23,17 @@ int op_string(va_list arg, char **buffer, unsigned int *old_size);
 int op_percent(va_list arg, char **buffer, unsigned int *old_size);
 int op_integer(va_list arg, char **buffer, unsigned int *old_size);
 int op_binary(va_list arg, char **buffer, unsigned int *old_size);
+int op_unsigned(va_list arg, char **buffer, unsigned int *old_size);
+int op_octal(va_list arg, char **buffer, unsigned int *old_size);
+int op_hex(va_list arg, char **buffer, unsigned int *old_size);
 
 int print_num(int num, char **buffer, unsigned int *old_size);
 int _putchar(char c, char **buffer, unsigned int *old_size);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
+int print_unsigned(unsigned int num, char **buffer, unsigned int *oldsize);
 int bin_conv(unsigned int num, char **buffer, unsigned int *old_size);
+int oct_conv(unsigned int num, char **buffer, unsigned int *old_size);
+int hex_conv(unsigned int num, char **buffer, unsigned int *old_size);
 
 #endif /* _MAIN_H_ */

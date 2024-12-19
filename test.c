@@ -11,9 +11,12 @@ int main(void)
 {
 	int len;
 	int len2;
+	long int res;
 
-	len = _printf("%d - %b = %d\n", 1024, -2, -1024);
-	len2 = printf("%d - %b = %d\n", 1024, -2, -1024);
+	res = INT_MAX;
+
+	len = _printf("%x + %X = %x\n", UINT_MAX, 0, res);
+	len2 = printf("%x + %X = %x\n", UINT_MAX, 0, res);
 	printf("%d\n", len);
 	printf("%d\n", len2);
 

@@ -111,7 +111,7 @@ int op_integer(va_list arg, char **buffer, unsigned int *old_size)
  * @buffer: the pointer to the buffer to which the equivalent is to be written
  * @old_size: pointer to the current active index in the buffer
  *
- * Return: the number of characters written 
+ * Return: the number of characters written
  */
 int op_binary(va_list arg, char **buffer, unsigned int *old_size)
 {

@@ -73,6 +73,10 @@ int (*func(const char *format)) (va_list, char **, unsigned int *)
 		{"d", op_integer},
 		{"i", op_integer},
 		{"b", op_binary},
+		{"u", op_unsigned},
+		{"o", op_octal},
+		{"x", op_hex},
+		{"X", op_hex},
 		{NULL, NULL}
 	};
 
