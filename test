@@ -15,7 +15,7 @@ int main(void)
 
 	len = _printf("%X\n", (void *)&len2);
 	len2 = printf("%p\n", (void *)&len2);
-	printf("%d\n", len);
+	printf("%+d\n", len);
 	printf("%d\n", len2);
 
 	return (0);
